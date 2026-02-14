@@ -1,9 +1,22 @@
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-links a');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-links');
     
+    // Hamburger menu toggle
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Close menu when link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
