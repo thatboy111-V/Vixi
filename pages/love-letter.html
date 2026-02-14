@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter - For My Princess</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .letter-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: rgba(255, 22, 84, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 22, 84, 0.3);
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: 0 20px 60px rgba(255, 22, 84, 0.2);
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px dashed rgba(255, 105, 180, 0.5);
+        }
+
+        .letter-date {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .letter-greeting {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: wave 0.6s ease-in-out infinite;
+        }
+
+        .letter-content {
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .letter-paragraph {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        .letter-paragraph:nth-child(1) { animation-delay: 0.1s; }
+        .letter-paragraph:nth-child(2) { animation-delay: 0.2s; }
+        .letter-paragraph:nth-child(3) { animation-delay: 0.3s; }
+        .letter-paragraph:nth-child(4) { animation-delay: 0.4s; }
+        .letter-paragraph:nth-child(5) { animation-delay: 0.5s; }
+
+        .letter-footer {
+            text-align: right;
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed rgba(255, 105, 180, 0.5);
+        }
+
+        .heart-decoration {
+            text-align: center;
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            animation: heartbeat 1.2s ease-in-out infinite;
+        }
+
+        .print-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 22, 84, 0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .navbar, .print-btn {
+                display: none;
+            }
+            .letter-container {
+                background: white;
+                border: 1px solid #ddd;
+                color: black;
+            }
+            .letter-content, .letter-paragraph {
+                color: black;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .letter-container {
+                margin: 90px 1rem;
+                padding: 1.5rem;
+            }
+
+            .letter-greeting {
+                font-size: 1.5rem;
+            }
+
+            .letter-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">💕 My Princess 💕</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="love-letter.html" class="active">Love Letter</a></li>
+                <li><a href="memories.html">Our Memories</a></li>
+                <li><a href="reasons.html">Reasons I Love You</a></li>
+                <li><a href="surprise.html">Special Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="letter-container">
+        <div class="letter-header">
+            <div class="letter-date">February 14, </div>
+            <div class="letter-greeting">Dear Princess,</div>
+        </div>
+
+        <div class="letter-content">
+            <div class="letter-paragraph">
+                I wanted to take a moment on this special day to express my deepest feelings for you. Every word I write feels insufficient to capture just how much you mean to me. You are not just my love, but my greatest inspiration, my best friend, and my reason to smile every single day.
+            </div>
+
+            <div class="heart-decoration">❤️ 💕 ❤️</div>
+
+            <div class="letter-paragraph">
+                When I first met you, I never imagined how profoundly you would transform my life. You brought color to my world, warmth to my heart, and light to my darkest days. Your laugh is my favorite sound, and your smile never fails to make my heart skip a beat. You are absolutely magical.
+            </div>
+
+            <div class="letter-paragraph">
+                I love the way you see the world with such kindness and compassion. I love how you inspire me to be a better person every single day. I love your strength, your grace, your intelligence, and your beautiful soul. I love you completely and unconditionally, now and forever.
+            </div>
+
+            <div class="heart-decoration">✨ 👑 ✨</div>
+
+            <div class="letter-paragraph">
+                Thank you for being my partner in this wonderful journey of life. Thank you for believing in me when I doubted myself. Thank you for loving me as fiercely as I love you. Every moment spent with you is a treasure I hold close to my heart.
+            </div>
+
+            <div class="letter-paragraph">
+                On this Valentine's Day and every day after, I promise to love you with all my heart, to support your dreams, to make you laugh, and to be your biggest cheerleader. You deserve the world, my princess, and I will spend my lifetime trying to give it to you.
+            </div>
+
+            <div class="heart-decoration">💗 Forever yours 💗</div>
+        </div>
+
+        <div class="letter-footer">
+            <p>All my love,</p>
+            <p style="font-size: 1.8rem; margin-top: 1rem;">💕</p>
+        </div>
+
+        <button class="print-btn" onclick="window.print()">🖨️ Print This Letter</button>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ for my Princess | Valentine's Day </p>
+        <div class="footer-hearts">
+            <span>💕</span>
+            <span>💕</span>
+            <span>💕</span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

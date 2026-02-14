@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reasons I Love You - For My Princess</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .reasons-container {
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reasons-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .reason-item {
+            background: rgba(255, 22, 84, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 22, 84, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease-out backwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-item:nth-child(1) { animation-delay: 0.05s; }
+        .reason-item:nth-child(2) { animation-delay: 0.1s; }
+        .reason-item:nth-child(3) { animation-delay: 0.15s; }
+        .reason-item:nth-child(4) { animation-delay: 0.2s; }
+        .reason-item:nth-child(5) { animation-delay: 0.25s; }
+        .reason-item:nth-child(6) { animation-delay: 0.3s; }
+        .reason-item:nth-child(7) { animation-delay: 0.35s; }
+        .reason-item:nth-child(8) { animation-delay: 0.4s; }
+        .reason-item:nth-child(9) { animation-delay: 0.45s; }
+        .reason-item:nth-child(10) { animation-delay: 0.5s; }
+
+        .reason-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .reason-item:hover::before {
+            left: 100%;
+        }
+
+        .reason-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 22, 84, 0.15);
+            border-color: var(--secondary-color);
+            box-shadow: 0 20px 50px rgba(255, 22, 84, 0.25);
+        }
+
+        .reason-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            opacity: 0.2;
+            color: var(--primary-color);
+        }
+
+        .reason-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .reason-title {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reason-text {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bonus-section {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .bonus-section h3 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .bonus-reasons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .bonus-item {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .bonus-item:nth-child(1) { animation-delay: 0s; }
+        .bonus-item:nth-child(2) { animation-delay: 0.3s; }
+        .bonus-item:nth-child(3) { animation-delay: 0.6s; }
+        .bonus-item:nth-child(4) { animation-delay: 0.9s; }
+
+        .bonus-item:hover {
+            transform: scale(1.15);
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .bonus-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bonus-label {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .infinite-love {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 22, 84, 0.15);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 22, 84, 0.3);
+        }
+
+        .infinite-love h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .infinite-love p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .infinite-love .hearts {
+            font-size: 2rem;
+            margin: 1rem 0;
+            animation: heartbeat 1.2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .reasons-container {
+                margin: 90px 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .reasons-list {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .bonus-reasons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .bonus-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">💕 My Princess 💕</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="love-letter.html">Love Letter</a></li>
+                <li><a href="memories.html">Our Memories</a></li>
+                <li><a href="reasons.html" class="active">Reasons I Love You</a></li>
+                <li><a href="surprise.html">Special Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="reasons-container">
+        <h2 class="section-title">💕 Reasons Why I Love You 💕</h2>
+
+        <div class="reasons-list">
+            <div class="reason-item">
+                <div class="reason-number">1</div>
+                <span class="reason-emoji">😊</span>
+                <div class="reason-title">Your Smile</div>
+                <div class="reason-text">It lights up the entire room. When you smile, the world becomes brighter. Your smile is my favorite view.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">2</div>
+                <span class="reason-emoji">💪</span>
+                <div class="reason-title">Your Strength</div>
+                <div class="reason-text">You face challenges with courage and grace. Your resilience inspires me every single day to be a better person.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">3</div>
+                <span class="reason-emoji">❤️</span>
+                <div class="reason-title">Your Kindness</div>
+                <div class="reason-text">Your compassion towards others shows the beautiful soul you have. You make the world a better place just by being in it.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">4</div>
+                <span class="reason-emoji">🧠</span>
+                <div class="reason-title">Your Intelligence</div>
+                <div class="reason-text">The way you think and analyze things fascinates me. Your wisdom and insights make every conversation deeper and meaningful.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">5</div>
+                <span class="reason-emoji">🎭</span>
+                <div class="reason-title">Your Sense of Humor</div>
+                <div class="reason-text">You make me laugh until my sides hurt. Your ability to find joy and humor in everyday life is absolutely contagious.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">6</div>
+                <span class="reason-emoji">🌟</span>
+                <div class="reason-title">Your Dreams</div>
+                <div class="reason-text">The way you pursue your goals with passion is inspiring. I'm honored to be your biggest supporter and cheerleader.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">7</div>
+                <span class="reason-emoji">💝</span>
+                <div class="reason-title">Your Love</div>
+                <div class="reason-text">The way you love is pure and genuine. Your affection makes me feel seen, valued, and absolutely cherished every day.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">8</div>
+                <span class="reason-emoji">🌺</span>
+                <div class="reason-title">Your Beauty</div>
+                <div class="reason-text">You're absolutely stunning, inside and out. But it's your inner beauty that truly takes my breath away.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">9</div>
+                <span class="reason-emoji">🎵</span>
+                <div class="reason-title">Everything About You</div>
+                <div class="reason-text">From the way you move to the way you speak, everything about you is mesmerizing. You're my perfect harmony.</div>
+            </div>
+
+            <div class="reason-item">
+                <div class="reason-number">10</div>
+                <span class="reason-emoji">👑</span>
+                <div class="reason-title">You're My Princess</div>
+                <div class="reason-text">You deserve to be treated like royalty every single day. You're my queen, my everything, my one and only.</div>
+            </div>
+        </div>
+
+        <div class="bonus-section">
+            <h3>✨ Bonus Reasons ✨</h3>
+            <div class="bonus-reasons">
+                <div class="bonus-item">
+                    <div class="bonus-emoji">🌙</div>
+                    <div class="bonus-label">You're my moon</div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-emoji">⭐</div>
+                    <div class="bonus-label">and my stars</div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-emoji">☀️</div>
+                    <div class="bonus-label">You light up</div>
+                </div>
+                <div class="bonus-item">
+                    <div class="bonus-emoji">🌈</div>
+                    <div class="bonus-label">my whole world</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="infinite-love">
+            <h3>And Most Importantly... 💕</h3>
+            <p>The reasons I love you are infinite. They multiply every day. With every sunrise we spend together, I fall for you all over again. You're not just my love - you're my home, my safe place, my forever.</p>
+            <div class="hearts">❤️ 💕 ❤️</div>
+            <p style="font-style: italic; margin-top: 1rem;">I love you today, tomorrow, and always... my beautiful princess.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ for my Princess | Valentine's Day </p>
+        <div class="footer-hearts">
+            <span>💕</span>
+            <span>💕</span>
+            <span>💕</span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>

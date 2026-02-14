@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories - For My Princess</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <style>
+        .memories-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 100%;
+        }
+
+        .memory-card {
+            background: rgba(255, 22, 84, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 22, 84, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease-out backwards;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .memory-card:nth-child(1) { animation-delay: 0.1s; }
+        .memory-card:nth-child(2) { animation-delay: 0.2s; }
+        .memory-card:nth-child(3) { animation-delay: 0.3s; }
+        .memory-card:nth-child(4) { animation-delay: 0.4s; }
+        .memory-card:nth-child(5) { animation-delay: 0.5s; }
+        .memory-card:nth-child(6) { animation-delay: 0.6s; }
+        .memory-card:nth-child(7) { animation-delay: 0.7s; }
+        .memory-card:nth-child(8) { animation-delay: 0.8s; }
+
+        .memory-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(255, 22, 84, 0.3);
+            background: rgba(255, 22, 84, 0.2);
+        }
+
+        .memory-emoji {
+            font-size: 4rem;
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background: linear-gradient(135deg, rgba(255, 22, 84, 0.2), rgba(255, 105, 180, 0.2));
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .memory-content {
+            padding: 1.5rem;
+        }
+
+        .memory-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .memory-title {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .memory-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: auto;
+            min-height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: 52%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 52%;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 0;
+            right: -61px;
+            box-shadow: 0 0 20px rgba(255, 22, 84, 0.6);
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -61px;
+            right: auto;
+        }
+
+        .timeline-content {
+            background: rgba(255, 22, 84, 0.1);
+            border: 1px solid rgba(255, 22, 84, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .memories-container {
+                margin: 90px 1rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                margin-right: 0;
+                margin-left: 70px;
+                text-align: left;
+            }
+
+            .timeline-item::before {
+                left: 12px;
+                right: auto;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .memories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        .memory-filter {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(255, 22, 84, 0.1);
+            border: 2px solid rgba(255, 22, 84, 0.3);
+            color: var(--text-light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">💕 My Princess 💕</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="love-letter.html">Love Letter</a></li>
+                <li><a href="memories.html" class="active">Our Memories</a></li>
+                <li><a href="reasons.html">Reasons I Love You</a></li>
+                <li><a href="surprise.html">Special Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="memories-container">
+        <h2 class="section-title">✨ Our Beautiful Memories ✨</h2>
+
+        <div class="memories-grid">
+            <div class="memory-card">
+                <div class="memory-emoji">🎮</div>
+                <div class="memory-content">
+                    <div class="memory-date">2 Years Ago</div>
+                    <div class="memory-title">How We Met</div>
+                    <div class="memory-description">We met in a game and it was destiny. What started as a chance encounter became the most beautiful journey of my life.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">🤝</div>
+                <div class="memory-content">
+                    <div class="memory-date">Growing Closer</div>
+                    <div class="memory-title">From Friends to Best Friends</div>
+                    <div class="memory-description">We became friends, then best friends. Every moment together felt special. You became the person I wanted to share everything with.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">💕</div>
+                <div class="memory-content">
+                    <div class="memory-date">Our Turn</div>
+                    <div class="memory-title">Lovers Now</div>
+                    <div class="memory-description">And now we're lovers. Best friends who love each other deeply. This is everything I ever dreamed of and so much more.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">🎮</div>
+                <div class="memory-content">
+                    <div class="memory-date">Throughout Our Journey</div>
+                    <div class="memory-title">Playing Games Together</div>
+                    <div class="memory-description">We've played together in multiple games. Every moment with you is fun and exciting. You make everything more enjoyable just by being there.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">😊</div>
+                <div class="memory-content">
+                    <div class="memory-date">Your Beautiful Smile</div>
+                    <div class="memory-title">That Radiant Smile</div>
+                    <div class="memory-description">You send me your smile and photos where you look absolutely beautiful. Your smile brightens my entire world and makes my heart skip a beat every time.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">🎵</div>
+                <div class="memory-content">
+                    <div class="memory-date">Your Voice & Songs</div>
+                    <div class="memory-title">Your Beautiful Voice</div>
+                    <div class="memory-description">I love your voice and the songs you sing for me. When you sing, my heart melts. Your voice is the most beautiful melody I could ever hear.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">📸</div>
+                <div class="memory-content">
+                    <div class="memory-date">Your Beauty</div>
+                    <div class="memory-title">Your Photos</div>
+                    <div class="memory-description">Every photo you send me shows your incredible beauty. But it's not just your appearance - it's how you light up in each moment. You're absolutely stunning.</div>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-emoji">🎂</div>
+                <div class="memory-content">
+                    <div class="memory-date">Your Special Days</div>
+                    <div class="memory-title">Your Birthdays</div>
+                    <div class="memory-description">Celebrating your birthdays with you is one of my greatest joys. Seeing you happy and loved on your special day means everything to me.</div>
+                </div>
+        </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2 Years Ago - We Met in a Game</div>
+                    <div class="timeline-text">A chance encounter that changed everything. Little did I know, I was meeting the love of my life</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Friends First</div>
+                    <div class="timeline-text">We became friends and spent so much time together. You became my closest companion</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Best Friends Forever</div>
+                    <div class="timeline-text">We grew even closer. You were my best friend, my confidant, my everything</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">We Became Lovers</div>
+                    <div class="timeline-text">And then our love story truly began. Best friends who love each other deeply</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Every Day with You</div>
+                    <div class="timeline-text">Playing games together, seeing your beautiful smile, hearing your amazing voice - every moment is precious</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Valentine's Day 2025</div>
+                    <div class="timeline-text">Right here, right now - celebrating our love. You are my everything, my princess, my forever</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ❤️ for my Princess | Valentine's Day </p>
+        <div class="footer-hearts">
+            <span>💕</span>
+            <span>💕</span>
+            <span>💕</span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/animations.js"></script>
+</body>
+</html>
